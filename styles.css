@@ -81,6 +81,139 @@ h1 {
   min-height: 92px;
 }
 
+.signup .sib-form {
+  padding: 0;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+}
+
+.signup #sib-form-container,
+.signup #sib-container {
+  max-width: none;
+}
+
+.signup #sib-container {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: var(--ink);
+  direction: ltr;
+  text-align: left;
+}
+
+.signup .sib-form-block {
+  padding: 0;
+}
+
+.signup .sib-form-block > p,
+.signup .sib-text-form-block p {
+  margin: 0;
+  font-family: inherit;
+  color: var(--ink);
+  text-align: left;
+}
+
+.signup .sib-form-block > p {
+  margin-bottom: 6px;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.signup .sib-form-block--text p,
+.signup .entry__specification {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.signup .entry__label {
+  display: block;
+  margin: 18px 0 8px;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.signup .entry__field {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.signup .entry__field:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(39, 100, 92, 0.14);
+}
+
+.signup .input {
+  width: 100%;
+  min-height: 48px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.signup .entry__error {
+  margin-top: 8px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.signup .entry__specification {
+  display: block;
+  margin-top: 8px;
+  font-family: inherit;
+  text-align: left;
+}
+
+.signup .sib-form-block__button {
+  min-height: 48px;
+  margin-top: 18px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent-strong);
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 800;
+  text-align: center;
+  cursor: pointer;
+}
+
+.signup .sib-form-block__button:hover {
+  background: var(--accent);
+}
+
+.signup .form-message {
+  max-width: none;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.signup .form-message--error {
+  border-color: #ff4949;
+  background-color: #ffeded;
+  color: #661d1d;
+}
+
+.signup .form-message--success {
+  border-color: #13ce66;
+  background-color: #e7faf0;
+  color: #085229;
+}
+
 .hero__video {
   width: 100%;
   min-width: 0;
