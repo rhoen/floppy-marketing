@@ -4,21 +4,24 @@ Static landing page for the Floppy software application.
 
 ## Local preview
 
-Open `index.html` in a browser, or serve the directory with any static file
-server.
+Open `src/index.html` in a browser, or serve `src/` with any static file server.
 
-## Cloudflare Pages
+## Cloudflare Workers Static Assets
 
-- Framework preset: `None`
+This project is configured for Cloudflare Workers Static Assets through
+`wrangler.jsonc`.
+
 - Build command: leave blank
-- Build output directory: `.`
+- Deploy command: `npx wrangler deploy`
+- Assets directory: `src/`
 
-Do not use `npx wrangler deploy` as the Pages build/deploy command for this
-site. That command deploys a Cloudflare Worker, and Wrangler will fail unless
-the account has a `workers.dev` subdomain or explicit Worker routes configured.
+Wrangler needs one public deployment target:
 
-In Cloudflare Pages, leave the build command empty and let Pages publish the
-static files from the output directory above.
+- Register a `workers.dev` subdomain in Cloudflare, or
+- Add a custom domain/route for this Worker in Cloudflare and `wrangler.jsonc`.
 
-Replace the placeholder video URL in `index.html` when the production video is
-ready.
+The current failure happens after assets upload because the account does not
+yet have a `workers.dev` subdomain and no Worker route is configured.
+
+Replace the placeholder video URL in `src/index.html` when the production video
+is ready.
