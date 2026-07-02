@@ -1,0 +1,8 @@
+{
+  "name": "floppy-marketing",
+  "private": true,
+  "scripts": {
+    "build": "rm -rf dist && mkdir -p dist && cp -R src/. dist/"
+  },
+  "devDependencies": {}
+}
