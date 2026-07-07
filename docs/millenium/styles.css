@@ -1,3 +1,35 @@
+:where(.sib-form-message-panel) {
+  display: none;
+}
+
+:where(.sib-form-message-panel .sib-notification__icon) {
+  width: 20px;
+  height: 20px;
+}
+
+#sib-container input:-ms-input-placeholder {
+  font-family: Helvetica, sans-serif;
+  text-align: left;
+  color: #c0ccda;
+}
+
+#sib-container input::placeholder {
+  font-family: Helvetica, sans-serif;
+  text-align: left;
+  color: #c0ccda;
+}
+
+#sib-container textarea::placeholder {
+  font-family: Helvetica, sans-serif;
+  text-align: left;
+  color: #c0ccda;
+}
+
+#sib-container a {
+  text-decoration: underline;
+  color: #2bb2fc;
+}
+
 :root {
   color-scheme: light;
   --bg: #f7f5ef;
