@@ -100,11 +100,11 @@ input {
 }
 
 h1 {
-  max-width: 12ch;
+  max-width: 14ch;
   margin-bottom: 24px;
-  font-size: clamp(3.6rem, 9vw, 8rem);
+  font-size: clamp(2.75rem, 5.5vw, 5.25rem);
   font-weight: 950;
-  line-height: 0.88;
+  line-height: 0.96;
   letter-spacing: 0;
 }
 
@@ -394,9 +394,5 @@ h1 {
 
   .chooser {
     min-height: auto;
-  }
-
-  h1 {
-    font-size: clamp(3.3rem, 16vw, 5.4rem);
   }
 }
