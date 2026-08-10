@@ -135,10 +135,16 @@ h1 {
   transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
-.disk-card:hover {
+.disk-card:hover,
+.disk-card:focus-visible {
   border-color: var(--green);
   box-shadow: 0 30px 80px rgba(34, 30, 20, 0.2);
   transform: translateY(-4px);
+}
+
+.disk-card:focus-visible {
+  outline: 3px solid var(--green-deep);
+  outline-offset: 4px;
 }
 
 .disk-card--quiet {
@@ -153,6 +159,41 @@ h1 {
     linear-gradient(135deg, rgba(242, 90, 170, 0.38), transparent 36%),
     linear-gradient(315deg, rgba(60, 183, 232, 0.42), transparent 42%),
     #fff7cc;
+}
+
+.disk-card--home {
+  border-color: rgba(38, 57, 173, 0.28);
+  background:
+    radial-gradient(circle at 88% 18%, rgba(255, 216, 92, 0.7) 0 9%, transparent 9.3%),
+    linear-gradient(145deg, rgba(155, 201, 255, 0.52), transparent 52%),
+    #fffdf8;
+}
+
+.disk-card--artist {
+  border-color: rgba(103, 87, 232, 0.3);
+  background:
+    radial-gradient(circle at 88% 16%, rgba(244, 206, 85, 0.72) 0 8%, transparent 8.3%),
+    linear-gradient(145deg, rgba(240, 108, 79, 0.23), transparent 48%),
+    #fbf7ee;
+}
+
+.disk-card--student {
+  border-color: rgba(28, 79, 62, 0.3);
+  background:
+    linear-gradient(rgba(23, 39, 31, 0.055) 1px, transparent 1px),
+    linear-gradient(145deg, rgba(244, 123, 101, 0.24), transparent 48%),
+    #fffdf4;
+  background-size: 100% 28px, auto, auto;
+}
+
+.disk-card--office {
+  border-color: rgba(83, 104, 217, 0.3);
+  background:
+    linear-gradient(rgba(24, 33, 58, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 33, 58, 0.045) 1px, transparent 1px),
+    linear-gradient(145deg, rgba(203, 220, 255, 0.72), transparent 52%),
+    #ffffff;
+  background-size: 34px 34px, 34px 34px, auto, auto;
 }
 
 .disk-card__label {
@@ -170,6 +211,22 @@ h1 {
   border: 2px solid var(--ink);
   background: var(--pink);
   color: var(--ink);
+}
+
+.disk-card--home .disk-card__label {
+  background: #425ae8;
+}
+
+.disk-card--artist .disk-card__label {
+  background: #6757e8;
+}
+
+.disk-card--student .disk-card__label {
+  background: #1c4f3e;
+}
+
+.disk-card--office .disk-card__label {
+  background: #5368d9;
 }
 
 .disk-card h2 {
@@ -195,6 +252,22 @@ h1 {
 
 .disk-card--loud .disk-card__cta {
   color: var(--ink);
+}
+
+.disk-card--home .disk-card__cta {
+  color: #2639ad;
+}
+
+.disk-card--artist .disk-card__cta {
+  color: #4033a3;
+}
+
+.disk-card--student .disk-card__cta {
+  color: #1c4f3e;
+}
+
+.disk-card--office .disk-card__cta {
+  color: #3548b4;
 }
 
 .mini-signup {
