@@ -120,7 +120,7 @@ button {
   box-shadow: var(--shadow);
 }
 
-.result-card--fail {
+.result-card--cancel {
   --accent: var(--coral);
   --accent-deep: var(--coral-deep);
   --accent-soft: rgba(185, 77, 58, 0.1);
