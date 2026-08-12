@@ -40,7 +40,7 @@
           </p>
 
           <div class="actions">
-            <button class="button" id="retry-checkout" type="button">Try checkout again</button>
+            <a class="button" href="../">Try checkout again</a>
             <a class="text-link" href="../../">Return to Floppy</a>
           </div>
         </section>
@@ -50,16 +50,5 @@
         Floppy Software
       </footer>
     </div>
-
-    <script>
-      document.getElementById('retry-checkout').addEventListener('click', function () {
-        if (document.referrer && window.history.length > 1) {
-          window.history.back();
-          return;
-        }
-
-        window.location.href = '../../';
-      });
-    </script>
   </body>
 </html>

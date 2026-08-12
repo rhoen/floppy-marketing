@@ -120,7 +120,8 @@ button {
   box-shadow: var(--shadow);
 }
 
-.result-card--cancel {
+.result-card--cancel,
+.result-card--error {
   --accent: var(--coral);
   --accent-deep: var(--coral-deep);
   --accent-soft: rgba(185, 77, 58, 0.1);
@@ -140,6 +141,21 @@ button {
   font-weight: 950;
   line-height: 1;
   box-shadow: 0 12px 28px var(--accent-shadow);
+}
+
+.status-spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.38);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: checkout-spin 800ms linear infinite;
+}
+
+@keyframes checkout-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .eyebrow {
@@ -245,6 +261,11 @@ h1 {
   background: var(--accent);
 }
 
+.button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
 .text-link {
   display: inline-flex;
   align-items: center;
@@ -262,6 +283,10 @@ h1 {
 :focus-visible {
   outline: 3px solid var(--accent-deep, var(--green-deep));
   outline-offset: 4px;
+}
+
+[hidden] {
+  display: none !important;
 }
 
 @media (max-width: 640px) {
@@ -299,5 +324,9 @@ h1 {
   *::before,
   *::after {
     scroll-behavior: auto !important;
+  }
+
+  .status-spinner {
+    animation: none;
   }
 }

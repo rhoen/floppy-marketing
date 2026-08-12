@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Continue to secure Stripe Checkout to purchase Floppy.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#faf7ef">
+    <title>Secure checkout | Floppy</title>
+    <link rel="icon" href="../favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="../assets/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="config.js"></script>
+    <script defer src="checkout.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="../" aria-label="Floppy home">
+          <img src="../assets/floppy-icon.png" alt="" width="44" height="44">
+          <span>Floppy</span>
+        </a>
+      </header>
+
+      <main class="page-main" id="main-content">
+        <section
+          class="result-card"
+          id="checkout-card"
+          aria-label="Checkout"
+          aria-busy="false"
+        >
+          <div class="checkout-state" id="checkout-state" hidden>
+            <div class="status-mark status-mark--loading" id="status-mark" aria-hidden="true">
+              <span class="status-spinner" id="status-indicator"></span>
+            </div>
+
+            <div id="checkout-message" role="status" aria-live="polite" aria-atomic="true">
+              <p class="eyebrow" id="checkout-eyebrow">Secure checkout</p>
+              <h1 id="checkout-title">Opening checkout…</h1>
+              <p class="lead" id="checkout-lead">
+                We’re preparing your secure Stripe checkout. You’ll be
+                redirected in a moment.
+              </p>
+            </div>
+
+            <p class="support" id="checkout-support" hidden>
+              Nothing has been charged. If the problem continues, email
+              <a href="mailto:licensing@floppysoftware.com?subject=Checkout%20help">licensing@floppysoftware.com</a>.
+            </p>
+
+            <div class="actions" id="checkout-actions" hidden>
+              <button class="button" id="retry-checkout" type="button">Try again</button>
+              <a class="text-link" href="../">Return to Floppy</a>
+            </div>
+          </div>
+
+          <noscript>
+            <div class="status-mark" aria-hidden="true">!</div>
+            <p class="eyebrow">JavaScript required</p>
+            <h1>We can’t open checkout.</h1>
+            <p class="lead">
+              Turn on JavaScript and reload this page to continue to secure
+              Stripe Checkout.
+            </p>
+            <div class="actions">
+              <a class="button" href="../">Return to Floppy</a>
+            </div>
+          </noscript>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        Floppy Software
+      </footer>
+    </div>
+  </body>
+</html>

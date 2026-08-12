@@ -23,7 +23,8 @@
   letter-spacing: inherit;
 }
 
-.disk-banner strong {
+.disk-banner a {
   color: #f4d95c;
   font-weight: 900;
+  text-underline-offset: 3px;
 }
