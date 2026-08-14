@@ -902,7 +902,7 @@ h1 em::after {
   gap: clamp(50px, 9vw, 130px);
   align-items: center;
   width: min(1240px, calc(100% - 48px));
-  margin: 0 auto;
+  margin: 0 auto clamp(64px, 9vw, 110px);
   padding: clamp(64px, 9vw, 110px);
   border-radius: 34px;
   background:
@@ -988,7 +988,7 @@ h1 em::after {
 }
 
 .signup .input::placeholder {
-  color: rgba(255, 255, 255, 0.56);
+  color: rgba(255, 255, 255, 0.68);
 }
 
 .signup .sib-form-block__button {
@@ -1013,7 +1013,7 @@ h1 em::after {
 .signup .entry__specification {
   display: block;
   margin: 8px 0 0 18px;
-  color: rgba(255, 255, 255, 0.58);
+  color: rgba(255, 255, 255, 0.68);
   font-family: inherit;
   font-size: 0.72rem;
   text-align: left;
