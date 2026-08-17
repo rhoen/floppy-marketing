@@ -303,14 +303,11 @@ h1 em::after {
   position: relative;
   min-height: 590px;
   border: 1px solid rgba(29, 27, 36, 0.12);
-  background-color: #d9cdbb;
-  background-image:
+  background:
     linear-gradient(rgba(29, 27, 36, 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(29, 27, 36, 0.045) 1px, transparent 1px),
-    url("../assets/pexels-diva-29930238.jpg");
-  background-position: 0 0, 0 0, center;
-  background-repeat: repeat, repeat, no-repeat;
-  background-size: 34px 34px, 34px 34px, cover;
+    #d9cdbb;
+  background-size: 34px 34px;
   box-shadow: 15px 18px 0 rgba(29, 27, 36, 0.12);
   isolation: isolate;
 }
@@ -934,16 +931,12 @@ h1 em::after {
   border-block: 5px solid var(--ink);
 }
 
-.catalog-card--orange .catalog-card__art--type {
+.catalog-card__art--type {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image:
-    linear-gradient(rgba(244, 206, 85, 0.08), rgba(240, 108, 79, 0.08)),
-    url("../assets/pexels-diva-33914370.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: radial-gradient(var(--ink) 1.2px, transparent 1.2px);
+  background-size: 12px 12px;
 }
 
 .catalog-card__art--type b {
