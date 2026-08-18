@@ -653,7 +653,7 @@ h1 em::after {
   font-style: normal;
 }
 
-.shared-start,
+.ready-start,
 .boundaries {
   width: min(1220px, calc(100% - 40px));
   margin: 0 auto;
@@ -678,14 +678,14 @@ h1 em::after {
   border-color: rgba(244, 240, 221, 0.55);
 }
 
-.shared-start__grid,
+.ready-start__grid,
 .boundaries__grid {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
   gap: clamp(46px, 8vw, 120px);
 }
 
-.shared-start h2,
+.ready-start h2,
 .boundaries h2,
 .mutual-aid h2,
 .join h2,
@@ -698,7 +698,7 @@ h1 em::after {
   line-height: 0.92;
 }
 
-.shared-start__copy,
+.ready-start__copy,
 .boundaries__grid > div:last-child {
   padding-top: 9px;
   color: var(--ink-soft);
@@ -1383,7 +1383,7 @@ h1 em::after {
     justify-self: center;
   }
 
-  .shared-start__grid,
+  .ready-start__grid,
   .boundaries__grid,
   .how,
   .mutual-aid,
@@ -1391,12 +1391,12 @@ h1 em::after {
     grid-template-columns: 1fr;
   }
 
-  .shared-start__grid,
+  .ready-start__grid,
   .boundaries__grid {
     gap: 34px;
   }
 
-  .shared-start h2,
+  .ready-start h2,
   .boundaries h2,
   .mutual-aid__copy h2,
   .join h2 {
@@ -1459,7 +1459,7 @@ h1 em::after {
   }
 
   .hero,
-  .shared-start,
+  .ready-start,
   .boundaries,
   .mutual-aid {
     width: min(100% - 28px, 620px);
@@ -1505,12 +1505,12 @@ h1 em::after {
     top: -4px;
   }
 
-  .shared-start,
+  .ready-start,
   .boundaries {
     padding: 84px 0;
   }
 
-  .shared-start h2,
+  .ready-start h2,
   .boundaries h2,
   .mutual-aid h2,
   .join h2,
