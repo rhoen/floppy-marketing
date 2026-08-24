@@ -309,6 +309,7 @@ h1 {
 }
 
 .hero__video {
+  padding-left: 25px;
   width: 100%;
   min-width: 0;
 }
