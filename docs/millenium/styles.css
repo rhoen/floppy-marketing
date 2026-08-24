@@ -64,6 +64,41 @@ main {
   margin: 0 auto;
 }
 
+.site-header {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding-top: 24px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--accent-strong);
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.brand img {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(18, 60, 56, 0.16);
+}
+
+.brand:hover span {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.brand:focus-visible {
+  border-radius: 8px;
+  outline: 3px solid var(--accent-strong);
+  outline-offset: 4px;
+}
+
 .hero {
   display: grid;
   grid-template-columns: minmax(280px, 0.82fr) minmax(420px, 1.18fr);
