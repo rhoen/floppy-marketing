@@ -17,17 +17,13 @@
       <p>Skip the marketing hype. <a href="../downloads/">Load the time-saving disk.</a></p>
     </aside>
 
-    <header class="site-header">
-      <a class="brand" href="../" aria-label="Floppy home">
-        <img src="../assets/floppy-icon.png" alt="" width="48" height="48">
-        <span>Floppy</span>
-      </a>
-    </header>
-
     <main>
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__content">
-          <p class="eyebrow">Floppy</p>
+          <a class="brand brand--hero" href="../" aria-label="Floppy home">
+            <img src="../assets/floppy-icon.png" alt="" width="48" height="48">
+            <span>Floppy</span>
+          </a>
           <h1 id="hero-title">Swap workspaces, not focus</h1>
           <p class="hero__copy">
             Floppy helps you bundle the apps, files, folders, and sites for each
@@ -42,11 +38,14 @@
         <div class="hero__video" aria-label="Floppy product video">
           <div class="video-frame">
             <iframe
-<<<<<<< Updated upstream
-              src="https://www.youtube.com/embed/X4VbdwhkE10?si=LjoSSqk5-HGpVdg4"
-              title="Floppy product video"
+              class="video-frame__item"
+              src="https://www.youtube.com/embed/XVFUtEh9zrY"
+              title="summer lofi — chill beats to relax to"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-=======
+              loading="lazy"
+              allowfullscreen>
+            </iframe>
+            <iframe
               class="video-frame__item"
               src="https://www.youtube.com/embed/fhL67fnDXcU"
               title="coding music — synthwave beats to program to"
@@ -84,7 +83,6 @@
               title="cozy spring lofi — chill music to study and relax to"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               loading="lazy"
->>>>>>> Stashed changes
               allowfullscreen>
             </iframe>
           </div>
@@ -194,6 +192,14 @@
         </div>
       </section>
     </main>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const videos = document.querySelectorAll('.video-frame__item');
+        const randomIndex = Math.floor(Math.random() * videos.length);
+
+        videos[randomIndex].style.display = 'block';
+      });
+    </script>
     <script>
       window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
       window.LOCALE = 'en';
