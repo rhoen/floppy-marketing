@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Get the Floppy download link sent to your inbox.">
+    <meta name="theme-color" content="#fff7db">
+    <title>Welcome to Floppy</title>
+    <link rel="icon" href="../../favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="../../assets/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="config.js"></script>
+    <script defer src="email-signup.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to form</a>
+
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="../../" aria-label="Floppy home">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span>Floppy</span>
+        </a>
+      </header>
+
+      <main class="page-main" id="main-content">
+        <section
+          class="signup-card"
+          id="signup-card"
+          aria-labelledby="signup-title"
+          aria-busy="false"
+        >
+          <div class="signup-copy">
+            <p class="kicker">Floppy incoming</p>
+            <h1 id="signup-title">
+              Welcome to the <span class="headline-accent">Floppy revolution.</span>
+            </h1>
+            <p class="lead">Drop your email below. We’ll send the download link.</p>
+          </div>
+
+          <div class="form-panel">
+            <form id="email-signup-form" method="post" hidden>
+              <label for="email">Email address</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                inputmode="email"
+                autocomplete="email"
+                autocapitalize="none"
+                enterkeyhint="send"
+                spellcheck="false"
+                placeholder="you@example.com"
+                maxlength="254"
+                aria-describedby="form-status"
+                required
+              >
+              <button id="submit-button" type="submit">
+                <span id="submit-label">Send me Floppy</span>
+                <span class="spinner" id="submit-spinner" aria-hidden="true" hidden></span>
+              </button>
+              <p class="form-status" id="form-status" role="status" aria-live="polite" aria-atomic="true" hidden></p>
+            </form>
+
+            <div class="success-state" id="success-state" role="status" aria-live="polite" hidden>
+              <span class="success-mark" aria-hidden="true">✓</span>
+              <h2 id="success-title" tabindex="-1">Check your inbox.</h2>
+              <p>Your Floppy download link is on the way.</p>
+            </div>
+
+            <noscript>
+              <p class="noscript-message">Turn on JavaScript and reload this page to send your download link.</p>
+            </noscript>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
