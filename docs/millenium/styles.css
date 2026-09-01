@@ -63,11 +63,11 @@ body {
 
 body > .disk-banner {
   background: var(--calmer-blue);
-  color: var(--calmer-lime);
+  color: #fff;
 }
 
 body > .disk-banner a {
-  color: inherit;
+  color: var(--calmer-lime);
 }
 
 main {
