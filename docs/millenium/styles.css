@@ -69,6 +69,10 @@ body > .disk-banner {
   color: #fff;
 }
 
+body > .disk-banner p {
+  color: #fff;
+}
+
 body > .disk-banner a {
   color: var(--calmer-lime);
 }
