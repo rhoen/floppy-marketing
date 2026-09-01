@@ -351,11 +351,17 @@ h1 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
-  padding: 0 0 80px;
+  margin-bottom: 56px;
+  padding: clamp(44px, 6vw, 72px);
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 8% 100%, rgba(155, 201, 255, 0.24), transparent 25%),
+    var(--calmer-blue);
+  color: #fff;
 }
 
 .details > div {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
   padding-top: 22px;
 }
 
@@ -366,7 +372,7 @@ h1 {
 
 .details p {
   margin-bottom: 0;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.68);
 }
 
 .steps {
@@ -518,7 +524,8 @@ h1 {
 
   .details {
     grid-template-columns: 1fr;
-    padding-bottom: 54px;
+    padding: 54px 22px;
+    border-radius: 22px;
   }
 
   .steps {
