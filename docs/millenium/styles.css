@@ -62,6 +62,9 @@ body {
 }
 
 body > .disk-banner {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   background: var(--calmer-blue);
   color: #fff;
 }
