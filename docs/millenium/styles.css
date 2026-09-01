@@ -113,8 +113,7 @@ main {
   grid-template-columns: minmax(280px, 0.82fr) minmax(420px, 1.18fr);
   gap: clamp(44px, 7vw, 96px);
   align-items: center;
-  min-height: 88vh;
-  padding: 72px 0 56px;
+  padding: 72px 0 32px;
 }
 
 .hero__content {
