@@ -358,7 +358,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 22px;
-  margin-bottom: 24px;
+  margin-bottom: 56px;
   padding: clamp(44px, 6vw, 72px);
   border-radius: 34px;
   background:
@@ -380,12 +380,6 @@ h1 {
 .details p {
   margin-bottom: 0;
   color: rgba(255, 255, 255, 0.68);
-}
-
-.install-button--details {
-  display: flex;
-  width: fit-content;
-  margin-inline: auto;
 }
 
 .steps {
@@ -492,6 +486,7 @@ h1 {
   gap: clamp(36px, 7vw, 88px);
   align-items: start;
   padding: 56px 0 80px;
+  border-top: 1px solid var(--line);
 }
 
 .updates__copy {
