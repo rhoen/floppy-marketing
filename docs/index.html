@@ -100,7 +100,7 @@
 
           <div class="page-node" aria-hidden="true">
             <span class="page-node__glyph"><span></span></span>
-            <span>Pages</span>
+            <span>Disks</span>
           </div>
 
           <div class="floppy-core" aria-label="Floppy landing page selector">
@@ -202,7 +202,16 @@
       </main>
     </div>
 
-    <dialog class="settings-panel" id="settings-panel" aria-labelledby="settings-title" aria-describedby="settings-description">
+    <aside
+      class="settings-panel"
+      id="settings-panel"
+      role="dialog"
+      aria-modal="false"
+      aria-hidden="true"
+      aria-labelledby="settings-title"
+      aria-describedby="settings-description"
+      inert
+    >
       <header class="settings-panel__header">
         <div>
           <h2 id="settings-title"><span aria-hidden="true">⊙</span> Global settings</h2>
@@ -248,7 +257,7 @@
       </div>
 
       <div class="visually-hidden" id="preference-status" aria-live="polite"></div>
-    </dialog>
+    </aside>
 
     <script src="home.js"></script>
     <script>

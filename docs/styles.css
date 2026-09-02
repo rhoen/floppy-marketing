@@ -1,18 +1,21 @@
 :root {
   color-scheme: light;
-  --canvas: #f3f5f8;
-  --canvas-raised: #f8fafc;
+  --font-ui: "Atkinson Hyperlegible", "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
+  --font-tech: "Atkinson Hyperlegible Mono", "SF Mono", Menlo, Monaco, Consolas, monospace;
+  --canvas: #f2f5f8;
+  --canvas-raised: #f7faff;
   --surface: #ffffff;
   --surface-translucent: rgba(255, 255, 255, 0.92);
-  --ink: #091522;
-  --ink-soft: #313f53;
-  --muted: #65748a;
-  --line: #9fb5ce;
-  --line-soft: rgba(84, 126, 170, 0.19);
-  --line-faint: rgba(84, 126, 170, 0.09);
-  --accent: #0865a9;
-  --accent-bright: #35aaf2;
+  --ink: #061523;
+  --ink-soft: #172a3e;
+  --muted: #506176;
+  --line: rgba(37, 74, 116, 0.34);
+  --line-soft: rgba(37, 74, 116, 0.2);
+  --line-faint: rgba(60, 100, 160, 0.08);
+  --accent: #005ea8;
+  --accent-bright: #004f91;
   --accent-pale: #cce8fb;
+  --focus: #8a5a00;
   --disk-fill: #e8f1fb;
   --disk-fill-deep: #d8e8f8;
   --tab-fill: #ffffff;
@@ -23,23 +26,26 @@
   --shadow: rgba(20, 42, 66, 0.22);
   --glow: rgba(49, 171, 244, 0.26);
   --star: rgba(39, 158, 225, 0.6);
+  --scanline: rgba(6, 21, 35, 0.018);
+  --vignette: rgba(37, 74, 116, 0.08);
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --canvas: #04060a;
-  --canvas-raised: #07101b;
+  --canvas: #05070d;
+  --canvas-raised: #080d16;
   --surface: #0b1421;
   --surface-translucent: rgba(8, 16, 28, 0.94);
   --ink: #f3f7fb;
   --ink-soft: #c4d0dd;
   --muted: #9eb2c7;
-  --line: #3b5068;
-  --line-soft: rgba(82, 128, 171, 0.24);
-  --line-faint: rgba(66, 116, 160, 0.1);
-  --accent: #7fc3fa;
-  --accent-bright: #55bfff;
-  --accent-pale: #a8d7fb;
+  --line: rgba(129, 164, 206, 0.38);
+  --line-soft: rgba(129, 164, 206, 0.22);
+  --line-faint: rgba(60, 100, 160, 0.1);
+  --accent: #68c5ff;
+  --accent-bright: #9bd9ff;
+  --accent-pale: #9bd9ff;
+  --focus: #ffd166;
   --disk-fill: #0c1727;
   --disk-fill-deep: #0a2138;
   --tab-fill: #091321;
@@ -50,6 +56,8 @@
   --shadow: rgba(0, 0, 0, 0.64);
   --glow: rgba(74, 188, 255, 0.3);
   --star: rgba(76, 190, 255, 0.58);
+  --scanline: rgba(0, 0, 0, 0.035);
+  --vignette: rgba(2, 3, 8, 0.58);
 }
 
 html {
@@ -83,13 +91,9 @@ body {
   overflow-x: hidden;
   background: var(--canvas);
   color: var(--ink);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-family: var(--font-ui);
   line-height: 1.5;
   transition: background-color 220ms ease, color 220ms ease;
-}
-
-body:has(.settings-panel[open]) {
-  overflow: hidden;
 }
 
 a {
@@ -143,6 +147,7 @@ p {
   background: color-mix(in srgb, var(--canvas) 88%, transparent);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+  font-family: var(--font-tech);
 }
 
 .wordmark,
@@ -198,7 +203,7 @@ p {
 .utility-bar__install:focus-visible,
 .status-bar a:focus-visible {
   border-radius: 2px;
-  outline: 2px solid var(--accent-bright);
+  outline: 2px solid var(--focus);
   outline-offset: 5px;
 }
 
@@ -215,19 +220,37 @@ p {
   transition: background-color 220ms ease;
 }
 
+.workspace::before,
+.workspace::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+}
+
+.workspace::before {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    var(--scanline) 3px,
+    var(--scanline) 5px
+  );
+}
+
+.workspace::after {
+  background: radial-gradient(ellipse at center, transparent 48%, var(--vignette) 100%);
+}
+
 .star-field {
   position: absolute;
   z-index: -5;
   inset: 0;
-  opacity: 0.82;
-  background-image:
-    radial-gradient(circle, var(--star) 0 1.3px, transparent 2.4px),
-    radial-gradient(circle, var(--star) 0 1px, transparent 2px),
-    radial-gradient(circle, var(--star) 0 1.7px, transparent 2.7px);
-  background-position: 13px 17px, 51px 72px, 96px 31px;
-  background-size: 127px 113px, 173px 151px, 229px 197px;
-  filter: drop-shadow(0 0 3px var(--glow));
-  mask-image: linear-gradient(to bottom, transparent, #000 7%, #000 92%, transparent);
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  pointer-events: none;
 }
 
 .orbit {
@@ -318,7 +341,7 @@ p {
   z-index: 3;
   top: clamp(34px, 6vh, 72px);
   left: clamp(28px, 4vw, 64px);
-  width: min(25vw, 360px);
+  width: min(22vw, 300px);
 }
 
 .eyebrow {
@@ -328,6 +351,7 @@ p {
   font-weight: 800;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  font-family: var(--font-tech);
 }
 
 .eyebrow span {
@@ -359,7 +383,7 @@ p {
 }
 
 .disk-link {
-  --disk-size: clamp(164px, 12vw, 192px);
+  --disk-size: clamp(128px, 9.5vw, 152px);
   position: absolute;
   z-index: 6;
   display: flex;
@@ -373,12 +397,12 @@ p {
 
 .disk-link--millenium {
   top: 27%;
-  left: 30%;
+  left: 36%;
 }
 
 .disk-link--z {
   top: 63%;
-  left: 25%;
+  left: 27%;
 }
 
 .disk-face {
@@ -437,6 +461,7 @@ p {
   color: var(--muted);
   font-size: 0.8rem;
   letter-spacing: 0.15em;
+  font-family: var(--font-tech);
 }
 
 .disk-name {
@@ -453,14 +478,15 @@ p {
   font-weight: 750;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  font-family: var(--font-tech);
 }
 
 .disk-tab {
   position: relative;
   z-index: 3;
   display: flex;
-  width: clamp(104px, 8vw, 124px);
-  min-height: 58px;
+  width: clamp(82px, 6.2vw, 100px);
+  min-height: 46px;
   align-items: center;
   justify-content: center;
   gap: 10px;
@@ -474,6 +500,7 @@ p {
   font-weight: 850;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  font-family: var(--font-tech);
   transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
@@ -500,7 +527,7 @@ p {
 
 .disk-link:focus-visible {
   border-radius: 50%;
-  outline: 2px dashed var(--accent-bright);
+  outline: 2px dashed var(--focus);
   outline-offset: 10px;
 }
 
@@ -508,9 +535,9 @@ p {
   position: absolute;
   z-index: 4;
   top: 49%;
-  left: 38.5%;
+  left: 42.5%;
   display: flex;
-  width: clamp(112px, 9vw, 142px);
+  width: clamp(88px, 7vw, 112px);
   aspect-ratio: 1;
   flex-direction: column;
   align-items: center;
@@ -524,6 +551,7 @@ p {
   font-size: 0.78rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  font-family: var(--font-tech);
   transform: translate(-50%, -50%);
 }
 
@@ -571,7 +599,7 @@ p {
   top: var(--orbit-y);
   left: var(--orbit-x);
   display: flex;
-  width: clamp(172px, 15vw, 220px);
+  width: clamp(128px, 10.5vw, 164px);
   aspect-ratio: 1;
   flex-direction: column;
   align-items: center;
@@ -585,6 +613,7 @@ p {
     0 18px 50px -36px var(--shadow);
   text-align: center;
   transform: translate(-50%, -50%);
+  font-family: var(--font-tech);
 }
 
 .floppy-core > span {
@@ -628,12 +657,13 @@ p {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transform: translate(-50%, -50%);
+  font-family: var(--font-tech);
 }
 
 .settings-trigger__orb {
   position: relative;
   display: grid;
-  width: clamp(104px, 9vw, 142px);
+  width: clamp(84px, 7vw, 110px);
   aspect-ratio: 1;
   place-items: center;
   border: 2px solid var(--line);
@@ -696,7 +726,7 @@ p {
 
 .settings-trigger:focus-visible {
   border-radius: 5px;
-  outline: 2px dashed var(--accent-bright);
+  outline: 2px dashed var(--focus);
   outline-offset: 8px;
 }
 
@@ -721,6 +751,7 @@ p {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  font-family: var(--font-tech);
 }
 
 .status-bar__group {
@@ -869,7 +900,7 @@ p {
 }
 
 .signup .sib-form-block__button:focus-visible {
-  outline: 2px solid var(--accent-bright);
+  outline: 2px solid var(--focus);
   outline-offset: 4px;
 }
 
@@ -911,15 +942,23 @@ p {
   box-shadow: -20px 0 50px -38px var(--shadow);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition:
+    transform 450ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 450ms ease,
+    visibility 450ms ease;
 }
 
-.settings-panel[open] {
-  display: block;
-  animation: panel-in 280ms cubic-bezier(0.22, 0.82, 0.28, 1) both;
-}
-
-.settings-panel::backdrop {
-  background: transparent;
+.settings-panel.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+  visibility: visible;
 }
 
 .settings-panel__header {
@@ -936,6 +975,7 @@ p {
   background: color-mix(in srgb, var(--panel) 92%, transparent);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
+  font-family: var(--font-tech);
 }
 
 .settings-panel__header h2 {
@@ -1000,7 +1040,7 @@ p {
 
 .settings-panel__close:focus-visible {
   border-color: var(--accent-bright);
-  outline: 2px solid var(--accent-bright);
+  outline: 2px solid var(--focus);
   outline-offset: 3px;
 }
 
@@ -1021,6 +1061,7 @@ p {
   font-weight: 800;
   letter-spacing: 0.11em;
   text-transform: uppercase;
+  font-family: var(--font-tech);
 }
 
 .segmented-control {
@@ -1054,6 +1095,7 @@ p {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+  font-family: var(--font-tech);
 }
 
 .segmented-control button:hover {
@@ -1069,7 +1111,7 @@ p {
 }
 
 .segmented-control button:focus-visible {
-  outline: 2px solid var(--accent-bright);
+  outline: 2px solid var(--focus);
   outline-offset: 4px;
 }
 
@@ -1101,32 +1143,21 @@ p {
   font-size: 2.7rem;
 }
 
-@keyframes panel-in {
-  from {
-    opacity: 0.65;
-    transform: translateX(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 @media (max-width: 1100px) {
   .workspace-copy {
-    width: 260px;
+    width: 220px;
   }
 
   .disk-link--millenium {
-    left: 29%;
+    left: 36%;
   }
 
   .disk-link--z {
-    left: 22%;
+    left: 27%;
   }
 
   .page-node {
-    left: 38%;
+    left: 42.5%;
   }
 
   .settings-trigger {
@@ -1138,7 +1169,7 @@ p {
   }
 }
 
-@media (max-width: 820px) {
+@media (max-width: 900px) {
   .utility-bar {
     grid-template-columns: 1fr auto;
   }
@@ -1337,10 +1368,6 @@ p {
 
   .settings-panel {
     width: 100vw;
-  }
-
-  .settings-panel::backdrop {
-    background: rgba(0, 0, 0, 0.16);
   }
 
   .settings-panel__header {
