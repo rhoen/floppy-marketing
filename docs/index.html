@@ -45,13 +45,15 @@
   <body>
     <div class="page-shell">
       <header class="utility-bar" aria-label="Floppy navigation">
-        <a class="wordmark" href="./" aria-label="Floppy home">
+        <a class="wordmark" id="home-link" href="./" aria-label="Floppy home" aria-keyshortcuts="Alt+0">
           <span class="wordmark__status" aria-hidden="true"></span>
           <span>Floppy</span>
+          <kbd class="shortcut-hint" aria-hidden="true"><span data-shortcut-modifier>Alt</span>+0</kbd>
         </a>
         <p class="utility-bar__mode">Landing page selector</p>
-        <a class="utility-bar__install" href="downloads/">
+        <a class="utility-bar__install" id="install-link" href="downloads/" aria-keyshortcuts="Alt+I">
           Install Floppy <span aria-hidden="true">↗</span>
+          <kbd class="shortcut-hint" aria-hidden="true"><span data-shortcut-modifier>Alt</span>+I</kbd>
         </a>
       </header>
 
@@ -74,8 +76,15 @@
             </p>
           </div>
 
-          <a class="disk-link disk-link--millenium" href="millenium/" aria-label="Load the Millenium mode page">
+          <a
+            class="disk-link disk-link--millenium"
+            id="millenium-link"
+            href="millenium/"
+            aria-label="Load the Millenium mode page"
+            aria-keyshortcuts="Alt+1"
+          >
             <span class="disk-face">
+              <kbd class="shortcut-hint shortcut-hint--disk" aria-hidden="true"><span data-shortcut-modifier>Alt</span>+1</kbd>
               <span class="disk-number">01</span>
               <span class="disk-name">Millenium</span>
               <span class="disk-mode">mode</span>
@@ -86,8 +95,15 @@
             </span>
           </a>
 
-          <a class="disk-link disk-link--z" href="extra/" aria-label="Load the Z-mode page">
+          <a
+            class="disk-link disk-link--z"
+            id="z-mode-link"
+            href="extra/"
+            aria-label="Load the Z-mode page"
+            aria-keyshortcuts="Alt+2"
+          >
             <span class="disk-face">
+              <kbd class="shortcut-hint shortcut-hint--disk" aria-hidden="true"><span data-shortcut-modifier>Alt</span>+2</kbd>
               <span class="disk-number">02</span>
               <span class="disk-name">Z-mode</span>
               <span class="disk-mode">full volume</span>
@@ -116,9 +132,13 @@
             aria-haspopup="dialog"
             aria-controls="settings-panel"
             aria-expanded="false"
+            aria-keyshortcuts="Alt+G"
           >
             <span class="settings-trigger__orb" aria-hidden="true"><i></i></span>
-            <span>Global settings</span>
+            <span class="settings-trigger__label">
+              Global settings
+              <kbd class="shortcut-hint" aria-hidden="true"><span data-shortcut-modifier>Alt</span>+G</kbd>
+            </span>
           </button>
 
           <div class="status-bar" aria-label="Floppy status">
@@ -127,8 +147,14 @@
               <span>2 disks ready</span>
             </div>
             <div class="status-bar__group status-bar__links">
-              <a href="#updates">Product updates</a>
-              <a href="downloads/">Install <span aria-hidden="true">↗</span></a>
+              <a id="updates-link" href="#updates" aria-keyshortcuts="Alt+U">
+                Product updates
+                <kbd class="shortcut-hint" aria-hidden="true"><span data-shortcut-modifier>Alt</span>+U</kbd>
+              </a>
+              <a href="downloads/" aria-keyshortcuts="Alt+I">
+                Install <span aria-hidden="true">↗</span>
+                <kbd class="shortcut-hint" aria-hidden="true"><span data-shortcut-modifier>Alt</span>+I</kbd>
+              </a>
             </div>
           </div>
         </section>
@@ -136,7 +162,7 @@
         <section class="updates" id="updates" aria-labelledby="updates-title">
           <div class="updates__copy">
             <p class="eyebrow">Optional transmission</p>
-            <h2 id="updates-title">Keep up with Floppy.</h2>
+            <h2 id="updates-title" tabindex="-1">Keep up with Floppy.</h2>
             <p>Occasional product news, improvements, and release notes.</p>
           </div>
 
