@@ -9,16 +9,10 @@
   const preferenceStatus = document.querySelector('#preference-status');
   const canvas = document.querySelector('#floppy-canvas');
   const workspace = document.querySelector('.workspace');
-  const shortcutModifierLabels = [...document.querySelectorAll('[data-shortcut-modifier]')];
 
   if (!panel || !openButton || !closeButton) {
     return;
   }
-
-  const isApplePlatform = /Mac|iPhone|iPad|iPod/i.test(navigator.platform || navigator.userAgent);
-  shortcutModifierLabels.forEach((label) => {
-    label.textContent = isApplePlatform ? '⌥' : 'Alt';
-  });
 
   const initCanvas = () => {
     const context = canvas?.getContext('2d');
@@ -222,13 +216,11 @@
     closeButton.focus();
   };
 
-  const closePanel = ({ restoreFocus = true } = {}) => {
+  const closePanel = () => {
     panel.classList.remove('is-open');
     panel.setAttribute('aria-hidden', 'true');
     openButton.setAttribute('aria-expanded', 'false');
-    if (restoreFocus) {
-      openButton.focus();
-    }
+    openButton.focus();
     panel.setAttribute('inert', '');
   };
 
@@ -266,74 +258,41 @@
     }
   });
 
-  const shortcutTargets = new Map([
-    ['Digit0', document.querySelector('#home-link')],
-    ['Digit1', document.querySelector('#millenium-link')],
-    ['Digit2', document.querySelector('#z-mode-link')],
-    ['KeyU', document.querySelector('#updates-link')],
-    ['KeyI', document.querySelector('#install-link')],
-    ['KeyG', openButton],
+  const arrowDirections = new Map([
+    ['ArrowLeft', -1],
+    ['ArrowUp', -1],
+    ['ArrowRight', 1],
+    ['ArrowDown', 1],
   ]);
-  const fallbackShortcutCodes = {
-    '0': 'Digit0',
-    '1': 'Digit1',
-    '2': 'Digit2',
-    u: 'KeyU',
-    i: 'KeyI',
-    g: 'KeyG',
-  };
-
-  const isEditableTarget = (target) => target instanceof Element && (
-    target.matches('input, textarea, select') || target.isContentEditable
-  );
-
-  const activateShortcut = (target) => {
-    if (!target) {
-      return;
-    }
-
-    if (target === openButton) {
-      openButton.click();
-      return;
-    }
-
-    if (panel.classList.contains('is-open')) {
-      target.focus({ preventScroll: true });
-      closePanel({ restoreFocus: false });
-    }
-
-    const href = target.getAttribute('href');
-    target.click();
-
-    if (href?.startsWith('#')) {
-      window.requestAnimationFrame(() => {
-        document.querySelector(href)?.querySelector('h1, h2, h3, [tabindex="-1"]')?.focus({ preventScroll: true });
-      });
-    }
-  };
 
   document.addEventListener('keydown', (event) => {
     if (
       event.defaultPrevented
-      || event.repeat
       || event.isComposing
-      || !event.altKey
+      || event.altKey
       || event.ctrlKey
       || event.metaKey
       || event.shiftKey
-      || isEditableTarget(event.target)
     ) {
       return;
     }
 
-    const fallbackCode = fallbackShortcutCodes[event.key?.toLowerCase()];
-    const target = shortcutTargets.get(event.code) || shortcutTargets.get(fallbackCode);
-    if (!target) {
+    const direction = arrowDirections.get(event.key);
+    const currentLink = document.activeElement;
+    if (!direction || !(currentLink instanceof HTMLAnchorElement) || !currentLink.closest('.page-shell')) {
+      return;
+    }
+
+    const links = [...document.querySelectorAll('.page-shell a[href]')].filter((link) => (
+      link.tabIndex >= 0 && link.getClientRects().length > 0 && !link.closest('[inert]')
+    ));
+    const currentIndex = links.indexOf(currentLink);
+    if (currentIndex < 0 || links.length < 2) {
       return;
     }
 
     event.preventDefault();
-    activateShortcut(target);
+    links[(currentIndex + direction + links.length) % links.length].focus();
   });
 
   themeButtons.forEach((button) => {
