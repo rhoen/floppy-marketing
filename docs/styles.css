@@ -61,6 +61,7 @@
 }
 
 html {
+  --disk-text-growth: 0px;
   scroll-behavior: smooth;
   font-size: 17.5px;
 }
@@ -74,6 +75,7 @@ html[data-text-size="medium"] {
 }
 
 html[data-text-size="large"] {
+  --disk-text-growth: 28px;
   font-size: 21px;
 }
 
@@ -383,7 +385,7 @@ p {
 }
 
 .disk-link {
-  --disk-size: clamp(128px, 9.5vw, 152px);
+  --disk-size: calc(clamp(128px, 9.5vw, 152px) + var(--disk-text-growth));
   position: absolute;
   z-index: 6;
   display: flex;
@@ -410,7 +412,9 @@ p {
   z-index: 2;
   display: flex;
   width: var(--disk-size);
+  height: var(--disk-size);
   aspect-ratio: 1;
+  flex: 0 0 var(--disk-size);
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -1254,7 +1258,7 @@ p {
   }
 
   .disk-link {
-    --disk-size: clamp(148px, 29vw, 178px);
+    --disk-size: calc(clamp(148px, 29vw, 178px) + var(--disk-text-growth));
   }
 
   .disk-link--millenium {
@@ -1329,7 +1333,7 @@ p {
   }
 
   .disk-link {
-    --disk-size: clamp(140px, 40vw, 164px);
+    --disk-size: calc(clamp(140px, 40vw, 164px) + var(--disk-text-growth));
   }
 
   .disk-face {
@@ -1428,7 +1432,7 @@ p {
   }
 
   .disk-link {
-    --disk-size: 136px;
+    --disk-size: calc(136px + var(--disk-text-growth));
   }
 
   .disk-link--millenium {
