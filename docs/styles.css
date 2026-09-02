@@ -61,7 +61,6 @@
 }
 
 html {
-  --disk-text-growth: 0px;
   scroll-behavior: smooth;
   font-size: 17.5px;
 }
@@ -75,7 +74,6 @@ html[data-text-size="medium"] {
 }
 
 html[data-text-size="large"] {
-  --disk-text-growth: 28px;
   font-size: 21px;
 }
 
@@ -385,7 +383,8 @@ p {
 }
 
 .disk-link {
-  --disk-size: calc(clamp(128px, 9.5vw, 152px) + var(--disk-text-growth));
+  --disk-base-size: clamp(128px, 9.5vw, 152px);
+  --disk-size: var(--disk-base-size);
   position: absolute;
   z-index: 6;
   display: flex;
@@ -405,6 +404,10 @@ p {
 .disk-link--z {
   top: 63%;
   left: 27%;
+}
+
+html[data-text-size="large"] .disk-link--z {
+  --disk-size: calc(var(--disk-base-size) + 26px);
 }
 
 .disk-face {
@@ -1258,7 +1261,7 @@ p {
   }
 
   .disk-link {
-    --disk-size: calc(clamp(148px, 29vw, 178px) + var(--disk-text-growth));
+    --disk-base-size: clamp(148px, 29vw, 178px);
   }
 
   .disk-link--millenium {
@@ -1333,7 +1336,7 @@ p {
   }
 
   .disk-link {
-    --disk-size: calc(clamp(140px, 40vw, 164px) + var(--disk-text-growth));
+    --disk-base-size: clamp(140px, 40vw, 164px);
   }
 
   .disk-face {
@@ -1432,7 +1435,7 @@ p {
   }
 
   .disk-link {
-    --disk-size: calc(136px + var(--disk-text-growth));
+    --disk-base-size: 136px;
   }
 
   .disk-link--millenium {
