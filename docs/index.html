@@ -1,125 +1,256 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light" data-text-size="medium">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Choose a Floppy marketing page mode and see how reusable workspaces can make your day simpler.">
+    <meta name="description" content="Choose a Floppy page and see how reusable workspaces make context switching simpler.">
+    <meta id="theme-color" name="theme-color" content="#f2f5f8">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Floppy | Swap workspaces, not focus">
+    <meta property="og:description" content="Bundle the apps, files, folders, and sites for each project into a reusable workspace.">
+    <meta property="og:image" content="https://floppysoftware.com/assets/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Floppy disks arranged around a blue orbital interface.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Floppy | Swap workspaces, not focus">
+    <meta name="twitter:description" content="Bundle the apps, files, folders, and sites for each project into a reusable workspace.">
+    <meta name="twitter:image" content="https://floppysoftware.com/assets/og.png">
+    <meta name="twitter:image:alt" content="Floppy disks arranged around a blue orbital interface.">
     <title>Floppy | Choose your disk</title>
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="assets/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <script>
+      (() => {
+        try {
+          const savedTheme = localStorage.getItem('floppy-theme');
+          const savedSize = localStorage.getItem('floppy-text-size');
+
+          if (savedTheme === 'light' || savedTheme === 'dark') {
+            document.documentElement.dataset.theme = savedTheme;
+          }
+
+          if (['small', 'medium', 'large'].includes(savedSize)) {
+            document.documentElement.dataset.textSize = savedSize;
+          }
+        } catch (error) {
+          // Preferences are optional when storage is unavailable.
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <main class="home">
-      <section class="chooser" aria-labelledby="chooser-title">
-        <div class="chooser__intro">
-          <a class="brand" href="./" aria-label="Floppy home">
-            <img src="assets/floppy-icon.png" alt="" width="48" height="48">
+    <div class="page-shell">
+      <header class="utility-bar" aria-label="Floppy navigation">
+        <a class="wordmark" href="./" aria-label="Floppy home">
+          <span class="wordmark__status" aria-hidden="true"></span>
+          <span>Floppy</span>
+        </a>
+        <p class="utility-bar__mode">Landing page selector</p>
+        <a class="utility-bar__install" href="downloads/">
+          Install Floppy <span aria-hidden="true">↗</span>
+        </a>
+      </header>
+
+      <main>
+        <section class="workspace" aria-labelledby="workspace-title">
+          <canvas class="star-field" id="floppy-canvas" aria-hidden="true"></canvas>
+          <div class="orbit orbit--outer" aria-hidden="true"></div>
+          <div class="orbit orbit--wide" aria-hidden="true"></div>
+          <div class="orbit orbit--middle" aria-hidden="true"></div>
+          <div class="orbit orbit--inner" aria-hidden="true"></div>
+          <div class="axis axis--horizontal" aria-hidden="true"></div>
+          <div class="axis axis--vertical" aria-hidden="true"></div>
+
+          <div class="workspace-copy">
+            <p class="eyebrow"><span aria-hidden="true">●</span> Two disks online</p>
+            <h1 id="workspace-title">Choose a page <span>to load.</span></h1>
+            <p>
+              Each disk is a different way into Floppy. Pick the calm product
+              story or boot the louder version.
+            </p>
+          </div>
+
+          <a class="disk-link disk-link--millenium" href="millenium/" aria-label="Load the Millenium mode page">
+            <span class="disk-face">
+              <span class="disk-number">01</span>
+              <span class="disk-name">Millenium</span>
+              <span class="disk-mode">mode</span>
+            </span>
+            <span class="disk-tab">
+              <span>Load</span>
+              <span aria-hidden="true">↗</span>
+            </span>
+          </a>
+
+          <a class="disk-link disk-link--z" href="extra/" aria-label="Load the Z-mode page">
+            <span class="disk-face">
+              <span class="disk-number">02</span>
+              <span class="disk-name">Z-mode</span>
+              <span class="disk-mode">full volume</span>
+            </span>
+            <span class="disk-tab">
+              <span>Load</span>
+              <span aria-hidden="true">↗</span>
+            </span>
+          </a>
+
+          <div class="page-node" aria-hidden="true">
+            <span class="page-node__glyph"><span></span></span>
+            <span>Pages</span>
+          </div>
+
+          <div class="floppy-core" aria-label="Floppy landing page selector">
             <span>Floppy</span>
-          </a>
-          <p class="eyebrow">Six live disks. One context-switching antidote.</p>
-          <h1 id="chooser-title">Which webpage disk do you want to load?</h1>
-          <p class="chooser__copy">
-            Floppy helps you bundle apps, files, folders, and sites into
-            reusable workspaces. Pick a page for the product story, the chaos,
-            or a version of Floppy made for the way you work.
-          </p>
-          <a class="install-button" href="downloads/">
-            Install Floppy <span aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
+            <i aria-hidden="true"></i>
+            <small>Select a disk</small>
+          </div>
 
-        <div class="disk-grid" id="modes" aria-label="Floppy page choices">
-          <a class="disk-card disk-card--quiet" href="millenium/">
-            <span class="disk-card__label">Disk 01</span>
-            <h2>Millenium mode</h2>
-            <p>
-              Calm, focused, and straightforward. Load this if you want the
-              product story with fewer fireworks and more breathing room.
-            </p>
-            <span class="disk-card__cta">Load the clean page</span>
-          </a>
+          <button
+            class="settings-trigger"
+            id="settings-trigger"
+            type="button"
+            aria-haspopup="dialog"
+            aria-controls="settings-panel"
+            aria-expanded="false"
+          >
+            <span class="settings-trigger__orb" aria-hidden="true"><i></i></span>
+            <span>Global settings</span>
+          </button>
 
-          <a class="disk-card disk-card--loud" href="extra/">
-            <span class="disk-card__label">Disk 02</span>
-            <h2>Z-mode</h2>
-            <p>
-              Maximal, weird, and extremely awake. Load this if your marketing
-              brain wants neon, motion, and context-switching chaos.
-            </p>
-            <span class="disk-card__cta">Load the loud page</span>
-          </a>
-        </div>
-      </section>
+          <div class="status-bar" aria-label="Floppy status">
+            <div class="status-bar__group">
+              <span class="status-bar__online"><i aria-hidden="true"></i> Floppy online</span>
+              <span>2 disks ready</span>
+            </div>
+            <div class="status-bar__group status-bar__links">
+              <a href="#updates">Product updates</a>
+              <a href="downloads/">Install <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </section>
 
-      <section class="mini-signup" aria-labelledby="signup-title">
-        <div>
-          <p class="eyebrow">Optional product updates</p>
-          <h2 id="signup-title">Get Floppy updates</h2>
-        </div>
+        <section class="updates" id="updates" aria-labelledby="updates-title">
+          <div class="updates__copy">
+            <p class="eyebrow">Optional transmission</p>
+            <h2 id="updates-title">Keep up with Floppy.</h2>
+            <p>Occasional product news, improvements, and release notes.</p>
+          </div>
 
-        <div class="signup" role="group" aria-label="Subscribe to optional Floppy product updates">
-          <div class="sib-form">
-            <div id="sib-form-container" class="sib-form-container">
-              <div id="error-message" class="sib-form-message-panel form-message form-message--error">
-                <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-                  <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon" aria-hidden="true">
-                    <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z" />
-                  </svg>
-                  <span class="sib-form-message-panel__inner-text">
-                    Your subscription could not be saved. Please try again.
-                  </span>
+          <div class="signup" role="group" aria-label="Subscribe to optional Floppy product updates">
+            <div class="sib-form">
+              <div id="sib-form-container" class="sib-form-container">
+                <div id="error-message" class="sib-form-message-panel form-message form-message--error" role="alert">
+                  <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+                    <span class="sib-form-message-panel__inner-text">Your subscription could not be saved. Please try again.</span>
+                  </div>
                 </div>
-              </div>
-              <div></div>
-              <div id="success-message" class="sib-form-message-panel form-message form-message--success">
-                <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-                  <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon" aria-hidden="true">
-                    <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
-                  </svg>
-                  <span class="sib-form-message-panel__inner-text">
-                    You’re subscribed to Floppy product updates.
-                  </span>
+                <div></div>
+                <div id="success-message" class="sib-form-message-panel form-message form-message--success" role="status">
+                  <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+                    <span class="sib-form-message-panel__inner-text">You’re subscribed to Floppy product updates.</span>
+                  </div>
                 </div>
-              </div>
-              <div></div>
-              <div id="sib-container" class="sib-container--large sib-container--vertical">
-                <form id="sib-form" method="POST" action="https://bb7724aa.sibforms.com/serve/MUIFAK_qYqBC2449E9fu1-GQY8YZGmJZHshMUtegukQt5QVIqjxLx6Xdlb27bmBmmlPlmy-wjYZH0SPHVVSTZcCkodel9-vqjT6gM-BsTq8YjzClALzP170pAhAiQ91nGoKQ0qGuyjakL4rPbU7S64Ekfdv-OUYZTZpLaFLN1y259qbdn0vyWXY3hezFxK7zMDIvwNbXXuJu-QAWtQ==" data-type="subscription">
-                  <div class="sib-input sib-form-block">
-                    <div class="form__entry entry_block">
-                      <div class="form__label-row">
-                        <label class="entry__label" for="EMAIL" data-required="*">
-                          Email address
-                        </label>
-                        <div class="entry__field">
-                          <input class="input" type="email" id="EMAIL" name="EMAIL" autocomplete="email" value="" placeholder="you@example.com" data-required="true" required>
+                <div></div>
+                <div id="sib-container" class="sib-container--large sib-container--vertical">
+                  <form
+                    id="sib-form"
+                    method="POST"
+                    action="https://bb7724aa.sibforms.com/serve/MUIFAK_qYqBC2449E9fu1-GQY8YZGmJZHshMUtegukQt5QVIqjxLx6Xdlb27bmBmmlPlmy-wjYZH0SPHVVSTZcCkodel9-vqjT6gM-BsTq8YjzClALzP170pAhAiQ91nGoKQ0qGuyjakL4rPbU7S64Ekfdv-OUYZTZpLaFLN1y259qbdn0vyWXY3hezFxK7zMDIvwNbXXuJu-QAWtQ=="
+                    data-type="subscription"
+                  >
+                    <div class="sib-input sib-form-block">
+                      <div class="form__entry entry_block">
+                        <div class="form__label-row">
+                          <label class="entry__label" for="EMAIL" data-required="*">Email address</label>
+                          <div class="entry__field">
+                            <input
+                              class="input"
+                              type="email"
+                              id="EMAIL"
+                              name="EMAIL"
+                              autocomplete="email"
+                              placeholder="you@example.com"
+                              data-required="true"
+                              aria-describedby="EMAIL_ERROR"
+                              required
+                            >
+                          </div>
                         </div>
+                        <p class="entry__error entry__error--primary" id="EMAIL_ERROR"></p>
                       </div>
-                      <label class="entry__error entry__error--primary"></label>
                     </div>
-                  </div>
-
-                  <div class="sib-form-block">
-                    <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
-                      <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512" aria-hidden="true">
-                        <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
-                      </svg>
-                      Subscribe
-                    </button>
-                  </div>
-
-                  <input type="text" name="email_address_check" value="" class="input--hidden">
-                  <input type="hidden" name="locale" value="en">
-                </form>
+                    <div class="sib-form-block">
+                      <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+                        <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512" aria-hidden="true">
+                          <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+                        </svg>
+                        Subscribe
+                      </button>
+                    </div>
+                    <input type="text" name="email_address_check" value="" class="input--hidden">
+                    <input type="hidden" name="locale" value="en">
+                  </form>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </div>
 
+    <dialog class="settings-panel" id="settings-panel" aria-labelledby="settings-title" aria-describedby="settings-description">
+      <header class="settings-panel__header">
+        <div>
+          <h2 id="settings-title"><span aria-hidden="true">⊙</span> Global settings</h2>
+          <p id="settings-description">Display preferences for this page</p>
+        </div>
+        <button class="settings-panel__close" type="button" aria-label="Close global settings">
+          <span aria-hidden="true"></span>
+        </button>
+      </header>
+
+      <div class="settings-panel__body">
+        <section class="setting-group" aria-labelledby="appearance-title">
+          <h3 id="appearance-title">Appearance</h3>
+          <div class="segmented-control segmented-control--appearance" role="group" aria-label="Color mode">
+            <button type="button" data-theme-choice="light" aria-pressed="true">
+              <span class="theme-symbol theme-symbol--light" aria-hidden="true">☼</span>
+              <span>Light</span>
+            </button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">
+              <span class="theme-symbol theme-symbol--dark" aria-hidden="true">◐</span>
+              <span>Dark</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="setting-group" aria-labelledby="text-size-title">
+          <h3 id="text-size-title">Text size</h3>
+          <div class="segmented-control segmented-control--size" role="group" aria-label="Text size">
+            <button type="button" data-size-choice="small" aria-pressed="false">
+              <strong class="type-sample type-sample--small" aria-hidden="true">A</strong>
+              <span>Small</span>
+            </button>
+            <button type="button" data-size-choice="medium" aria-pressed="true">
+              <strong class="type-sample type-sample--medium" aria-hidden="true">A</strong>
+              <span>Medium</span>
+            </button>
+            <button type="button" data-size-choice="large" aria-pressed="false">
+              <strong class="type-sample type-sample--large" aria-hidden="true">A</strong>
+              <span>Large</span>
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <div class="visually-hidden" id="preference-status" aria-live="polite"></div>
+    </dialog>
+
+    <script src="home.js"></script>
     <script>
       window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
       window.LOCALE = 'en';
